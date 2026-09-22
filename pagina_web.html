@@ -1,4 +1,611 @@
-<html>
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bit3 — Seguiment del projecte</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400..700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+
+    --white: #ffffff;
+    --bg-tint: #f2f7fd;
+    --blue-deep: #0b2a6b;
+    --blue-primary: #1e5fde;
+    --blue-soft: #c4dafb;
+    --blue-line: #d8e6fb;
+    --ink: #142033;
+    --ink-soft: #4a5875;
+  }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+  * { box-sizing: inherit; }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --white: #0e1424;
+      --bg-tint: #131b30;
+      --blue-deep: #cfe0fb;
+      --blue-primary: #6f9cf5;
+      --blue-soft: #26355c;
+      --blue-line: #253355;
+      --ink: #eef2fb;
+      --ink-soft: #a9b6d6;
+    }
+  }
+  :root[data-theme="dark"] {
+    --white: #0e1424;
+    --bg-tint: #131b30;
+    --blue-deep: #cfe0fb;
+    --blue-primary: #6f9cf5;
+    --blue-soft: #26355c;
+    --blue-line: #253355;
+    --ink: #eef2fb;
+    --ink-soft: #a9b6d6;
+  }
+
+  body {
+    margin: 0;
+    background: var(--white);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, .word {
+    font-family: "Space Grotesk", "IBM Plex Sans", system-ui, sans-serif;
+    color: var(--blue-deep);
+    margin: 0;
+  }
+  a { color: var(--blue-primary); }
+
+  .wrap {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* Hero */
+  .hero {
+    padding: 72px 0 56px;
+    position: relative;
+  }
+  .hero .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    border: 1px solid var(--blue-line);
+    padding: 5px 12px;
+    border-radius: 999px;
+    margin-bottom: 28px;
+  }
+  .hero .chip svg { display:block; }
+  .wordmark {
+    font-size: clamp(56px, 12vw, 108px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 0.95;
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+  }
+  .wordmark .three {
+    color: var(--blue-primary);
+  }
+  .tagline {
+    max-width: 46ch;
+    font-size: 19px;
+    color: var(--ink-soft);
+    margin-top: 20px;
+  }
+
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    margin-top: 48px;
+  }
+  .intro-block h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  .intro-block p {
+    color: var(--ink-soft);
+    font-size: 15px;
+    margin: 0;
+  }
+  @media (max-width: 620px) {
+    .intro-grid { grid-template-columns: 1fr; gap: 24px; }
+  }
+
+  .cta-row { margin-top: 48px; }
+  .cta-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--blue-primary);
+    color: var(--white);
+    font-weight: 500;
+    font-size: 15px;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+  }
+  .cta-link:hover { opacity: 0.92; }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--ink-soft);
+    font-size: 14px;
+    text-decoration: none;
+    margin-bottom: 32px;
+  }
+  .back-link:hover { color: var(--blue-primary); }
+
+  .page.hidden { display: none; }
+
+  section {
+    padding: 48px 0;
+    border-top: 1px solid var(--blue-line);
+  }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+  .section-head h2 { font-size: 26px; letter-spacing: -0.01em; }
+  .section-head p { color: var(--ink-soft); font-size: 15px; max-width: 40ch; margin: 6px 0 0; }
+
+  /* Identitat visual */
+  .identity-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .swatch {
+    border-radius: 4px;
+    height: 88px;
+    display: flex;
+    align-items: flex-end;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--white);
+    font-family: "IBM Plex Sans", monospace;
+  }
+  .swatch.deep { background: var(--blue-deep); }
+  .swatch.primary { background: var(--blue-primary); }
+  .swatch.soft { background: var(--blue-soft); color: var(--blue-deep); }
+  .type-sample {
+    margin-top: 24px;
+    padding: 20px 22px;
+    background: var(--bg-tint);
+    border-radius: 4px;
+  }
+  .type-sample .big { font-size: 28px; font-weight: 600; color: var(--blue-deep); }
+  .type-sample .small { color: var(--ink-soft); font-size: 14px; margin-top: 6px; }
+
+  /* Updates */
+  .timeline { display: flex; flex-direction: column; }
+  .update {
+    display: grid;
+    grid-template-columns: 84px 1fr;
+    gap: 20px;
+    padding: 20px 0;
+    border-top: 1px solid var(--blue-line);
+  }
+  .update:first-child { border-top: none; }
+  .update .num {
+    font-family: "Space Grotesk", sans-serif;
+    color: var(--blue-primary);
+    font-size: 15px;
+    padding-top: 2px;
+  }
+  .update h3 { font-size: 17px; color: var(--ink); font-weight: 600; }
+  .update .date { color: var(--ink-soft); font-size: 13px; display:block; margin-bottom: 4px; }
+  .update p { margin: 8px 0 0; color: var(--ink-soft); font-size: 15px; }
+
+  /* Evidències */
+  .evidence-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .evidence {
+    border: 1px dashed var(--blue-soft);
+    border-radius: 4px;
+    padding: 18px;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .evidence h3 { font-size: 15px; color: var(--ink); font-weight: 600; }
+  .evidence p { color: var(--ink-soft); font-size: 13px; margin: 8px 0 0; }
+  .evidence .tag {
+    align-self: flex-start;
+    font-size: 11px;
+    color: var(--blue-primary);
+    border: 1px solid var(--blue-soft);
+    padding: 2px 8px;
+    border-radius: 999px;
+    margin-bottom: 10px;
+  }
+
+  /* Enllaços */
+  .links { list-style: none; margin: 0; padding: 0; }
+  .links li {
+    padding: 14px 0;
+    border-top: 1px solid var(--blue-line);
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: baseline;
+  }
+  .links li:first-child { border-top: none; }
+  .links a { text-decoration: none; font-weight: 500; }
+  .links a:hover { text-decoration: underline; }
+  .links span { color: var(--ink-soft); font-size: 13px; white-space: nowrap; }
+
+  /* Pròximament */
+  .upcoming {
+    background: var(--bg-tint);
+    border-radius: 6px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .upcoming h2 { font-size: 22px; }
+  .upcoming p { color: var(--ink-soft); margin: 0; max-width: 52ch; }
+  .upcoming .status {
+    font-size: 13px;
+    color: var(--blue-primary);
+    font-weight: 500;
+  }
+
+  footer {
+    padding: 32px 0 56px;
+    color: var(--ink-soft);
+    font-size: 13px;
+    border-top: 1px solid var(--blue-line);
+  }
+
+  /* Nav */
+  .site-nav {
+    position: sticky;
+    top: 0;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 20;
+    background: var(--white);
+    border-bottom: 1px solid var(--blue-line);
+  }
+  .nav-inner {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-brand {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 700;
+    color: var(--blue-deep);
+    font-size: 18px;
+  }
+  .dropdown { position: relative; }
+  .dropdown-toggle {
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--blue-deep);
+    background: var(--bg-tint);
+    border: 1px solid var(--blue-line);
+    border-radius: 6px;
+    padding: 8px 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+  }
+  .dropdown-toggle svg {
+    transition: transform 0.18s ease;
+  }
+  .dropdown.open .dropdown-toggle svg { transform: rotate(180deg); }
+  .dropdown-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    min-width: 220px;
+    background: var(--white);
+    border: 1px solid var(--blue-line);
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(11, 42, 107, 0.12);
+    list-style: none;
+    margin: 0;
+    padding: 6px;
+    opacity: 0;
+    transform: translateY(-6px);
+    pointer-events: none;
+    transition: opacity 0.16s ease, transform 0.16s ease;
+  }
+  .dropdown.open .dropdown-menu {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  .dropdown-menu li a {
+    display: block;
+    padding: 9px 12px;
+    border-radius: 5px;
+    color: var(--ink);
+    font-size: 14px;
+    text-decoration: none;
+  }
+  .dropdown-menu li a:hover {
+    background: var(--bg-tint);
+    color: var(--blue-primary);
+  }
+
+  @media (max-width: 620px) {
+    .identity-grid { grid-template-columns: 1fr 1fr; }
+    .evidence-grid { grid-template-columns: 1fr; }
+    .update { grid-template-columns: 48px 1fr; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <span class="nav-brand">Bit3</span>
+    <div class="dropdown" id="sectionsDropdown">
+      <button class="dropdown-toggle" id="dropdownToggle" aria-haspopup="true" aria-expanded="false">
+        Apartats
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <li role="menuitem"><a href="#" data-page="home">Inici</a></li>
+        <li role="menuitem"><a href="#identitat" data-page="seguiment">Identitat visual</a></li>
+        <li role="menuitem"><a href="#updates" data-page="seguiment">Updates setmanals</a></li>
+        <li role="menuitem"><a href="#evidencies" data-page="seguiment">Evidències del treball</a></li>
+        <li role="menuitem"><a href="#materials" data-page="seguiment">Enllaços i materials</a></li>
+        <li role="menuitem"><a href="#entrevista" data-page="seguiment">Entrevista</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <div class="page" id="page-home">
+  <header class="hero">
+    <span class="chip">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="5.2" height="5.2" rx="1" stroke="currentColor"/><rect x="7.8" y="1" width="5.2" height="5.2" rx="1" fill="currentColor"/><rect x="1" y="7.8" width="5.2" height="5.2" rx="1" fill="currentColor"/><rect x="7.8" y="7.8" width="5.2" height="5.2" rx="1" stroke="currentColor"/></svg>
+      Projecte TIC — entrevistes a startups
+    </span>
+    <h1 class="wordmark">Bit<span class="three">3</span></h1>
+    <p class="tagline">Seguiment del treball del grup: contactem petites startups tecnològiques espanyoles en fase de finançament col·lectiu per aconseguir-hi una entrevista.</p>
+
+    <div class="intro-grid">
+      <div class="intro-block">
+        <h2>Qui som?</h2>
+        <p>Substitueix aquest text: presenteu el grup Bit3, els noms dels membres i el context de l'assignatura o projecte en què treballeu.</p>
+      </div>
+      <div class="intro-block">
+        <h2>Què fem?</h2>
+        <p>Substitueix aquest text: expliqueu breument l'objectiu del projecte — contactar startups TIC espanyoles en crowdfunding a Kickstarter per aconseguir una entrevista.</p>
+      </div>
+      <div class="intro-block">
+        <h2>Com ho fem?</h2>
+        <p>Substitueix aquest text: expliqueu el mètode de treball — cerca a Kickstarter, correus de contacte, seguiment de respostes.</p>
+      </div>
+      <div class="intro-block">
+        <h2>Per què ho fem?</h2>
+        <p>Substitueix aquest text: expliqueu la motivació o l'objectiu acadèmic darrere del projecte.</p>
+      </div>
+    </div>
+
+    <div class="cta-row">
+      <a class="cta-link" href="#identitat" data-page="seguiment">Veure el seguiment del projecte</a>
+    </div>
+  </header>
+  </div>
+
+  <div class="page hidden" id="page-seguiment">
+  <a class="back-link" href="#" data-page="home">← Inici</a>
+
+  <section id="identitat">
+    <div class="section-head">
+      <div>
+        <h2>Identitat visual</h2>
+        <p>Blanc i blau com a base cromàtica del grup.</p>
+      </div>
+    </div>
+    <div class="identity-grid">
+      <div class="swatch deep">#0B2A6B</div>
+      <div class="swatch primary">#1E5FDE</div>
+      <div class="swatch soft">#C4DAFB</div>
+    </div>
+    <div class="type-sample">
+      <div class="big">Bit3</div>
+      <div class="small">Space Grotesk per als títols · IBM Plex Sans per al text</div>
+    </div>
+  </section>
+
+  <section id="updates">
+    <div class="section-head">
+      <div>
+        <h2>Updates setmanals</h2>
+        <p>Registre curt de l'avenç del grup cada setmana.</p>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="update">
+        <span class="num">01</span>
+        <div>
+          <span class="date">Setmana 1</span>
+          <h3>Definició de l'abast del projecte</h3>
+          <p>Substitueix aquest text pel resum real: què vau decidir, quins criteris de cerca vau fixar per triar startups TIC espanyoles.</p>
+        </div>
+      </div>
+      <div class="update">
+        <span class="num">02</span>
+        <div>
+          <span class="date">Setmana 2</span>
+          <h3>Cerca de projectes a Kickstarter</h3>
+          <p>Substitueix aquest text: llista de plataformes revisades i nombre de projectes preseleccionats.</p>
+        </div>
+      </div>
+      <div class="update">
+        <span class="num">03</span>
+        <div>
+          <span class="date">Setmana 3</span>
+          <h3>Primers contactes per email</h3>
+          <p>Substitueix aquest text: a quantes startups heu escrit i quantes respostes heu rebut fins ara.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="evidencies">
+    <div class="section-head">
+      <div>
+        <h2>Evidències del treball realitzat</h2>
+        <p>Captures, documents o enllaços que demostren la feina feta.</p>
+      </div>
+    </div>
+    <div class="evidence-grid">
+      <div class="evidence">
+        <div>
+          <span class="tag">Captura</span>
+          <h3>Correu enviat a la startup</h3>
+        </div>
+        <p>Afegeix aquí la imatge o l'enllaç a la captura del correu de contacte.</p>
+      </div>
+      <div class="evidence">
+        <div>
+          <span class="tag">Document</span>
+          <h3>Llista de startups preseleccionades</h3>
+        </div>
+        <p>Afegeix aquí l'enllaç al full de càlcul o document amb el buidatge de projectes.</p>
+      </div>
+      <div class="evidence">
+        <div>
+          <span class="tag">Captura</span>
+          <h3>Resposta rebuda</h3>
+        </div>
+        <p>Afegeix aquí la captura o el resum de la primera resposta positiva.</p>
+      </div>
+      <div class="evidence">
+        <div>
+          <span class="tag">Àudio / vídeo</span>
+          <h3>Prova de gravació</h3>
+        </div>
+        <p>Afegeix aquí l'enllaç a la prova tècnica de l'equip d'enregistrament.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="materials">
+    <div class="section-head">
+      <div>
+        <h2>Enllaços i materials importants</h2>
+        <p>Documents i recursos de referència del grup.</p>
+      </div>
+    </div>
+    <ul class="links">
+      <li><a href="#">Guió de preguntes per a l'entrevista</a><span>Google Docs</span></li>
+      <li><a href="#">Full de seguiment de startups contactades</a><span>Full de càlcul</span></li>
+      <li><a href="#">Plantilla de correu de contacte</a><span>Document</span></li>
+      <li><a href="#">Kickstarter — categoria Tecnologia</a><span>Plataforma</span></li>
+    </ul>
+  </section>
+
+  <section id="entrevista">
+    <div class="upcoming">
+      <span class="status">Properament</span>
+      <h2>Entrevista editada i ampliada</h2>
+      <p>Quan tinguem l'entrevista gravada, aquí hi penjarem la versió editada i ampliada, amb el muntatge final i el material extra que no va entrar al tall inicial.</p>
+    </div>
+  </section>
+  </div>
+
+  <footer>
+    Bit3 — pàgina de seguiment del projecte
+  </footer>
+
+</div>
+
+<script>
+  (function () {
+    var dropdown = document.getElementById('sectionsDropdown');
+    var toggle = document.getElementById('dropdownToggle');
+    var pageHome = document.getElementById('page-home');
+    var pageSeguiment = document.getElementById('page-seguiment');
+    if (!dropdown || !toggle) return;
+
+    function closeMenu() {
+      dropdown.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+    function openMenu() {
+      dropdown.classList.add('open');
+      toggle.setAttribute('aria-expanded', 'true');
+    }
+
+    function showPage(name) {
+      if (name === 'seguiment') {
+        pageHome.classList.add('hidden');
+        pageSeguiment.classList.remove('hidden');
+      } else {
+        pageSeguiment.classList.add('hidden');
+        pageHome.classList.remove('hidden');
+      }
+      window.scrollTo(0, 0);
+    }
+
+    toggle.addEventListener('click', function (e) {
+      e.stopPropagation();
+      if (dropdown.classList.contains('open')) { closeMenu(); } else { openMenu(); }
+    });
+
+    document.querySelectorAll('[data-page]').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        var target = link.getAttribute('data-page');
+        var hash = link.getAttribute('href');
+        showPage(target);
+        closeMenu();
+        if (target === 'seguiment' && hash && hash.length > 1) {
+          var el = document.querySelector(hash);
+          if (el) { setTimeout(function () { el.scrollIntoView({ behavior: 'smooth' }); }, 20); }
+        }
+      });
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!dropdown.contains(e.target)) closeMenu();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeMenu();
+    });
+  })();
+</script>
+</body>
+</html><html>
     <head>
         <Title>Mi sitio web</Title>
     </head>
