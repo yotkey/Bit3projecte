@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contacte | Bit3</title>
+    <link rel="icon" type="image/png" href="../imagenes/favicon.png">
+
+    <link
+        href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <header class="main-header">
+
+        <a href="../index.html" class="logo">
+            <img src="../imagenes/logo.png" alt="Bit3">
+        </a>
+
+        <nav class="navigation">
+            <a href="../index.html">Blog</a>
+            <a href="quienes-somos.html">Qui Som</a>
+            <a href="objetivos.html">Objectius</a>
+            <a href="entrevista.html">Entrevista</a>
+            <a href="contacto.html">Contacte</a>
+        </nav>
+
+        <div class="language-selector">
+            <a href="#" class="language">
+                <img src="../imagenes/espana.png" alt="Español">
+            </a>
+            <a href="#" class="language">
+                <img src="../imagenes/cataluna.png" alt="Catalan">
+            </a>
+            <a href="#" class="language">
+                <img src="../imagenes/inglaterra.png" alt="English">
+            </a>
+        </div>
+
+    </header>
+
+    <main>
+
+        <section class="page-content">
+            <h1>Contacte</h1>
+            <p>Tens alguna pregunta o proposta? Escriu-nos i et respondrem lo abans posible.</p>
+        </section>
+
+        <form class="contact-form" action="https://formspree.io/f/xzezkypp" method="POST">
+
+            <div class="form-group">
+                <label for="nombre">Nom</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="mensaje">Missatge</label>
+                <textarea id="mensaje" name="mensaje" rows="6" required></textarea>
+            </div>
+
+            <button type="submit">Enviar missatge</button>
+
+        </form>
+
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2026 Bit3. Tots els drets reservats.</p>
+    </footer>
+
+    <script src="../script.js"></script>
+
+</body>
+</html>

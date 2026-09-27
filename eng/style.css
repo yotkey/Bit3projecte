@@ -1,0 +1,652 @@
+
+/* ================================
+   CONFIGURACIÓN GENERAL
+================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+
+    font-family: "General Sans", sans-serif;
+
+    background: #f1f5f9;
+
+    color: #ffffff;
+}
+
+
+/* ================================
+   HEADER
+================================ */
+
+.main-header {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 3%;
+
+    /* Azul con gradiente muy sutil */
+    background: linear-gradient(
+        90deg,
+        #2563a6,
+        #2b69aa
+    );
+
+    box-shadow:
+        0 3px 10px rgba(0, 0, 0, 0.15);
+
+    z-index: 1000;
+
+    /* Animación de aparición */
+    opacity: 0;
+    transform: translateY(-35px);
+
+    animation:
+        headerAppear 0.4s ease-out 0.3s forwards;
+}
+
+
+/* ================================
+   LOGOTIPO
+================================ */
+
+.logo {
+    display: flex;
+    align-items: center;
+
+    flex-shrink: 0;
+
+    text-decoration: none;
+}
+
+.logo img {
+    display: block;
+
+    width: 120px;
+    height: auto;
+
+    object-fit: contain;
+}
+
+
+/* ================================
+   NAVEGACIÓN
+================================ */
+
+.navigation {
+    position: absolute;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+}
+
+.navigation a {
+    display: flex;
+    align-items: center;
+
+    min-height: 58px;
+
+    padding: 0 18px;
+
+    border: 1px solid transparent;
+    border-radius: 5px;
+
+    color: #ffffff;
+
+    font-size: clamp(1.05rem, 1.3vw, 1.4rem);
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    text-decoration: none;
+
+    /* Sombra permanente */
+    text-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.3);
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+
+/* Recuadro gris al pasar el ratón */
+
+.navigation a:hover {
+    background-color: rgba(128, 128, 128, 0.45);
+
+    border-color: #aeb4bb;
+}
+
+
+/* ================================
+   BANDERAS / IDIOMAS
+================================ */
+
+.language-selector {
+    display: flex;
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 12px;
+
+    min-width: 105px;
+
+    margin-left: auto;
+}
+
+.language {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 40px;
+
+    padding: 5px;
+
+    /* Sin reborde */
+    border: none;
+    border-radius: 5px;
+
+    background: transparent;
+
+    overflow: hidden;
+
+    transition:
+        background-color 0.2s ease;
+}
+
+.language img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+}
+
+
+/* Efecto al pasar el ratón sobre una bandera */
+
+.language:hover {
+    background-color: rgba(128, 128, 128, 0.45);
+}
+
+
+/* ================================
+   ANIMACIÓN DEL HEADER
+================================ */
+
+@keyframes headerAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(-35px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+/* ================================
+   ANIMACIÓN DEL FOOTER
+================================ */
+
+@keyframes footerAppear {
+    from {
+        opacity: 0;
+        transform: translateY(35px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ================================
+   ADAPTACIÓN A TABLETS
+================================ */
+
+@media (max-width: 1250px) {
+
+    .main-header {
+        padding: 0 2%;
+    }
+
+    .logo img {
+        width: 150px;
+    }
+
+    .navigation {
+        gap: 5px;
+    }
+
+    .navigation a {
+        padding: 0 12px;
+
+        font-size: 1rem;
+    }
+
+}
+
+
+/* ================================
+   ADAPTACIÓN A PANTALLAS PEQUEÑAS
+================================ */
+
+@media (max-width: 1000px) {
+
+    .main-header {
+        position: fixed;
+
+        height: auto;
+        min-height: 120px;
+
+        padding: 20px 4%;
+
+        flex-wrap: wrap;
+
+        gap: 20px;
+    }
+
+    .navigation {
+        position: static;
+
+        order: 3;
+
+        width: 100%;
+
+        margin: 0;
+
+        transform: none;
+
+        justify-content: center;
+
+        flex-wrap: wrap;
+
+        gap: 8px;
+    }
+
+    .navigation a {
+        min-height: 48px;
+
+        padding: 0 14px;
+
+        font-size: 1rem;
+    }
+
+}
+
+
+/* ================================
+   ADAPTACIÓN A MÓVILES
+================================ */
+
+@media (max-width: 600px) {
+
+    .main-header {
+        padding: 16px 5%;
+    }
+
+    .logo img {
+        width: 115px;
+    }
+
+    .navigation {
+        gap: 6px;
+    }
+
+    .navigation a {
+        min-height: 42px;
+
+        padding: 0 10px;
+
+        font-size: 0.9rem;
+    }
+
+    .language-selector {
+        gap: 8px;
+
+        min-width: auto;
+    }
+
+    .language {
+        width: 34px;
+        height: 34px;
+
+        padding: 4px;
+    }
+
+}
+
+/* ================================
+   CONTENIDO PRINCIPAL
+================================ */
+
+main {
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    padding: 150px 5% 90px;
+}
+
+
+/* ================================
+   BLOG - INTRODUCCIÓN
+================================ */
+
+.blog-hero {
+    margin-bottom: 40px;
+}
+
+.blog-hero h1 {
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+
+    color: #1e293b;
+
+    margin-bottom: 10px;
+}
+
+.blog-hero p {
+    max-width: 650px;
+
+    color: #475569;
+
+    font-size: 1.05rem;
+}
+
+
+/* ================================
+   BLOG - TARJETAS DE ENTRADAS
+================================ */
+
+.blog-grid {
+    display: grid;
+
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+
+    gap: 28px;
+}
+
+.blog-card {
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+
+    background: #ffffff;
+
+    border-radius: 10px;
+
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+
+    text-decoration: none;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.blog-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+.blog-card-image {
+    height: 170px;
+    overflow: hidden;
+}
+
+.blog-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.blog-card-content {
+    padding: 20px;
+}
+
+.blog-card-date {
+    font-size: 0.8rem;
+    font-weight: 600;
+
+    color: #2563a6;
+
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.blog-card h2 {
+    font-size: 1.15rem;
+
+    color: #1e293b;
+
+    margin: 8px 0 10px;
+}
+
+.blog-card p {
+    font-size: 0.92rem;
+    line-height: 1.5;
+
+    color: #64748b;
+}
+
+
+/* ================================
+   PÁGINAS DE APARTADOS (LOREM IPSUM)
+================================ */
+
+.page-content h1 {
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+
+    color: #1e293b;
+
+    margin-bottom: 22px;
+}
+
+.page-content p {
+    max-width: 780px;
+
+    color: #475569;
+
+    font-size: 1.02rem;
+    line-height: 1.7;
+
+    margin-bottom: 18px;
+}
+
+
+/* ================================
+   ENTRADA DE BLOG (ARTÍCULO)
+================================ */
+
+.post-header {
+    margin-bottom: 30px;
+}
+
+.post-header .blog-card-date {
+    display: inline-block;
+
+    margin-bottom: 10px;
+}
+
+.post-header h1 {
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+
+    color: #1e293b;
+}
+
+.post-content p {
+    max-width: 780px;
+
+    color: #334155;
+
+    font-size: 1.05rem;
+    line-height: 1.8;
+
+    margin-bottom: 20px;
+}
+
+
+/* ================================
+   PIE DE PÁGINA
+================================ */
+
+.main-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+
+    padding: 20px 5%;
+
+    text-align: center;
+
+    color: #ffffff;
+    background: #64748b;
+
+    font-size: 0.85rem;
+
+    z-index: 1000;
+
+    opacity: 0;
+    transform: translateY(35px);
+
+    animation: footerAppear 0.4s ease-out 0.3s forwards;
+}
+
+
+/* ================================
+   AJUSTE DE CONTENIDO EN MÓVIL/TABLET
+   (el header pasa a varias líneas)
+================================ */
+
+@media (max-width: 1000px) {
+
+    main {
+        padding-top: 230px;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    main {
+        padding-top: 250px;
+    }
+
+}
+
+/* ================================
+   FORMULARIO DE CONTACTO
+================================ */
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+
+    max-width: 500px;
+
+    background: #ffffff;
+
+    padding: 30px;
+
+    border-radius: 10px;
+
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-weight: 600;
+    font-size: 0.9rem;
+
+    color: #1e293b;
+
+    margin-bottom: 6px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    font-family: "General Sans", sans-serif;
+    font-size: 1rem;
+
+    color: #1e293b;
+
+    padding: 10px 14px;
+
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+
+    background: #f8fafc;
+
+    resize: vertical;
+
+    transition: border-color 0.2s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+
+    border-color: #2563a6;
+}
+
+.contact-form button {
+    align-self: flex-start;
+
+    font-family: "General Sans", sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+
+    color: #ffffff;
+
+    padding: 12px 28px;
+
+    border: none;
+    border-radius: 6px;
+
+    background: linear-gradient(90deg, #2563a6, #2b69aa);
+
+    cursor: pointer;
+
+    transition: opacity 0.2s ease;
+}
+
+.contact-form button:hover {
+    opacity: 0.85;
+}
