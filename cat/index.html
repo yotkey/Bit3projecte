@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Bit3</title>
-    <link rel="icon" type="image/png" href="imagenes/favicon.png">
+    <link rel="icon" type="image/png" href="../imagenes/favicon.png">
 
     <!-- General Sans -->
     <link
@@ -22,13 +22,13 @@
 
         <!-- Logo -->
         <a href="index.html" class="logo">
-            <img src="imagenes/logo.png" alt="Bit3">
+            <img src="../imagenes/logo.png" alt="Bit3">
         </a>
 
         <!-- Navegació -->
         <nav class="navigation">
             <a href="index.html">Blog</a>
-            <a href="apartados/quienes-somos.html">Qui Som</a>
+            <a href="apartados/quienes-somos.html">Qui som</a>
             <a href="apartados/objetivos.html">Objectius</a>
             <a href="apartados/entrevista.html">Entrevista</a>
             <a href="apartados/contacto.html">Contacte</a>
@@ -38,63 +38,89 @@
         <div class="language-selector">
 
             <a href="../index.html" class="language">
-                <img src="imagenes/espana.png" alt="Español">
+                <img src="../imagenes/espana.png" alt="Español">
             </a>
 
             <a href="index.html" class="language">
-                <img src="imagenes/cataluna.png" alt="Català">
+                <img src="../imagenes/cataluna.png" alt="Català">
             </a>
 
             <a href="../eng/index.html" class="language">
-                <img src="imagenes/inglaterra.png" alt="English">
+                <img src="../imagenes/inglaterra.png" alt="English">
             </a>
-            
+
         </div>
 
     </header>
 
     <main>
 
-        <section class="blog-hero">
-            <h1>Últimes publicacions</h1>
-            <p>Aquí es publicaran setmanalment els avenços i les novetats de Bit3.</p>
+        <!-- ÚLTIMA PUBLICACIÓ -->
+        <section class="latest-post">
+
+            <div class="section-heading">
+                <h1>Última publicació</h1>
+                <p>Aquí es publicarà l'últim avanç de Bit3.</p>
+            </div>
+
+            <a href="blog/tercera_semana.html" class="blog-card blog-card-featured">
+                <div class="blog-card-image">
+                    <img src="../imagenes/tercera.png" alt="Tercera setmana del projecte">
+                </div>
+                <div class="blog-card-content">
+                    <span class="blog-card-date">4 d'octubre 2026</span>
+                    <h2>Tercera setmana del projecte</h2>
+                    <p>Durant la setmana del 28 al 4 d'octubre es van establir les bases en arduino per començar el projecte.</p>
+                </div>
+            </a>
+
         </section>
 
-        <section class="blog-grid">
+        <!-- TOTES LES PUBLICACIONS -->
+        <section class="all-posts">
 
-            <a href="blog/creacion.html" class="blog-card">
-                <div class="blog-card-image">
-                    <img src="imagenes/origen.png" alt="Título de la entrada">
-                </div>
-                <div class="blog-card-content">
-                    <span class="blog-card-date">14 de setembre 2026</span>
-                    <h2>L'origen de Bit3: com va néixer aquest projecte</h2>
-                    <p>El naixement de Bit3, declaració d'intencions i identitat visual.</p>
-                </div>
-            </a>
+            <div class="section-heading">
+                <h2>Totes les publicacions</h2>
+                <p>Aquí es publicaran setmanalment els avenços i les novetats de Bit3.</p>
+            </div>
 
-            <a href="blog/segunda_semana.html" class="blog-card">
-                <div class="blog-card-image">
-                    <img src="imagenes/segundasemana.png" alt="Título de la entrada">
-                </div>
-                <div class="blog-card-content">
-                    <span class="blog-card-date">21 de setembre 2026</span>
-                    <h2>Segona setmana del projecte</h2>
-                    <p>Durant aquesta setmana es va acabar de definir el projecte i es va donar a conèixer davant de la classe.</p>
-                </div>
-            </a>
+            <div class="blog-grid">
 
-            <a href="blog/tercera_semana.html" class="blog-card">
-                <div class="blog-card-image">
-                    <img src="imagenes/tercera.png" alt="Tercera setmana del projecte">
-                </div>
-                <div class="blog-card-content">
-                    <span class="blog-card-date">4 d'octubre de 2026</span>
-                    <h2>Tercera setmana del projecte</h2>
-                    <p>Durant la setmana del 28 de setembre al 4 d'octubre vam establir les bases amb Arduino per començar el projecte.</p>
-                </div>
-            </a>
-            
+                <a href="blog/tercera_semana.html" class="blog-card">
+                    <div class="blog-card-image">
+                        <img src="../imagenes/tercera.png" alt="Tercera setmana del projecte">
+                    </div>
+                    <div class="blog-card-content">
+                        <span class="blog-card-date">4 d'octubre 2026</span>
+                        <h3>Tercera setmana del projecte</h3>
+                        <p>Durant la setmana del 28 al 4 d'octubre es van establir les bases en arduino per començar el projecte.</p>
+                    </div>
+                </a>
+
+                <a href="blog/segunda_semana.html" class="blog-card">
+                    <div class="blog-card-image">
+                        <img src="../imagenes/segundasemana.png" alt="Segona setmana del projecte">
+                    </div>
+                    <div class="blog-card-content">
+                        <span class="blog-card-date">21 de setembre 2026</span>
+                        <h3>Segona setmana del projecte</h3>
+                        <p>Durant aquesta setmana es va acabar de definir el projecte i es va donar a conèixer davant de la classe.</p>
+                    </div>
+                </a>
+
+                <a href="blog/creacion.html" class="blog-card">
+                    <div class="blog-card-image">
+                        <img src="../imagenes/origen.png" alt="L'origen de Bit3">
+                    </div>
+                    <div class="blog-card-content">
+                        <span class="blog-card-date">14 de setembre 2026</span>
+                        <h3>L'origen de Bit3: com va néixer aquest projecte</h3>
+                        <p>El naixement de Bit3, declaració d'intencions i identitat visual.</p>
+                    </div>
+                </a>
+
+            </div>
+
         </section>
 
     </main>
