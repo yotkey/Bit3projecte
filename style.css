@@ -288,13 +288,13 @@ main {
 .section-heading h1,
 .section-heading h2 {
     font-size: clamp(1.8rem, 3vw, 2.6rem);
-    color: #1e293b;
+    color: #000000;
     margin-bottom: 10px;
 }
 
 .section-heading p {
     max-width: 650px;
-    color: #475569;
+    color: #000000;
     font-size: 1.05rem;
 }
 
