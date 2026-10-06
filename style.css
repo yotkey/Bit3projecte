@@ -373,7 +373,7 @@ main {
 .section-heading h2 {
     font-size: clamp(1.8rem, 3vw, 2.6rem);
 
-    color: #1e293b;
+    color: #ffffff;
 
     margin-bottom: 10px;
 }
@@ -381,7 +381,7 @@ main {
 .section-heading p {
     max-width: 650px;
 
-    color: #475569;
+    color: #ffffff;
 
     font-size: 1.05rem;
 }
